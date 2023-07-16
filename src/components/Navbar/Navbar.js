@@ -6,7 +6,7 @@ import { LOGIN_ROUTE } from '../../constants/consts';
 const Navbar = () => {
   const user = false;
   return (
-    <AppBar color={'transparent'} position='static'>
+    <AppBar position='static' style={{ background: 'lightblue' }}>
       <Toolbar variant={'dense'}>
         <Box sx={{ flexGrow: 1 }} />
         {user ? (
