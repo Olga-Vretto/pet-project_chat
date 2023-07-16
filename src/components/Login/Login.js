@@ -1,8 +1,7 @@
 import { Box, Button, Container, Grid } from '@mui/material';
 import React, { useContext } from 'react';
 import { Context } from '../..';
-import { GoogleAuthProvider, getAuth, signInWithPopup } from 'firebase/auth';
-
+import { GoogleAuthProvider, getAuth, signInWithRedirect } from 'firebase/auth';
 
 const Login = () => {
   const { firebaseApp } = useContext(Context);
@@ -11,11 +10,8 @@ const Login = () => {
   const login = async () => {
     const provider = new GoogleAuthProvider();
     try {
-      const result = await signInWithPopup(auth, provider);
-      const user = result.user;
-      console.log(user);
+      await signInWithRedirect(auth, provider);
     } catch (error) {
-      // Handle any errors during authentication
       console.log(error);
     }
   };
@@ -35,7 +31,9 @@ const Login = () => {
           direction={'column'}
         >
           <Box p={5}>
-            <Button onClick={login} variant={'outlined'}>Enter with Google</Button>
+            <Button onClick={login} variant={'outlined'}>
+              Enter with Google
+            </Button>
           </Box>
         </Grid>
       </Grid>

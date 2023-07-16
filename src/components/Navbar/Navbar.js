@@ -1,19 +1,25 @@
 import { AppBar, Box, Button, Toolbar } from '@mui/material';
-import React from 'react';
+import React, { useContext } from 'react';
 import { NavLink } from 'react-router-dom';
 import { LOGIN_ROUTE } from '../../constants/consts';
+import { Context } from '../..';
+import { useAuthState } from 'react-firebase-hooks/auth';
 
 const Navbar = () => {
-  const user = false;
+  const { auth } = useContext(Context);
+  const [user] = useAuthState(auth);
+
   return (
     <AppBar position='static' style={{ background: 'lightblue' }}>
       <Toolbar variant={'dense'}>
         <Box sx={{ flexGrow: 1 }} />
         {user ? (
-          <Button variant={'outlined'}>Login</Button>
+          <Button onClick={() => auth.signOut()} variant={'outlined'}>
+            Back
+          </Button>
         ) : (
           <NavLink to={LOGIN_ROUTE}>
-            <Button variant={'outlined'}>Back</Button>
+            <Button variant={'outlined'}>Login</Button>
           </NavLink>
         )}
       </Toolbar>

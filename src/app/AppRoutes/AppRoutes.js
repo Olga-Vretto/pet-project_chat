@@ -7,8 +7,9 @@ import { Context } from '../..';
 
 const AppRoutes = () => {
   const { auth } = useContext(Context);
-  const [user] = useAuthState();
-  console.log(user);
+  const [user] = useAuthState(auth);
+
+  
   return user ? (
     <Routes>
       {privateRoutes.map(({ path, element }) => (
