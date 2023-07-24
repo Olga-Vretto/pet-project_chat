@@ -5,6 +5,7 @@ import { useContext, useRef, useState } from 'react';
 import { Context } from '../..';
 import { Avatar, Button, Container, Grid, TextField } from '@mui/material';
 import Loader from '../Loader/Loader';
+import styles from './AppChat.module.scss';
 
 const AppChat = () => {
   const { auth, firestore } = useContext(Context);
@@ -35,13 +36,12 @@ const AppChat = () => {
 
   return (
     <Container>
-      <Grid
-        container
-        justifyContent={'center'}
-        style={{ height: window.innerHeight - 50, marginTop: 20 }}
-      >
-        <div ref={messagesContainerRef} 
-        style={{ width: '80%', height: '60vh', border: '1px solid blue', overflowY: 'auto' }}>
+      <Grid className={styles['chat']} container justifyContent={'center'}>
+        <div
+          ref={messagesContainerRef}
+          className={styles['chat']}
+          style={{ width: '80%', height: '60vh', border: '1px solid blue', overflowY: 'auto' }}
+        >
           {messages &&
             messages.map((message, index) => (
               <div
