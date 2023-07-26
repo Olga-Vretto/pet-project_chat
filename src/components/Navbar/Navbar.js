@@ -10,7 +10,10 @@ const Navbar = () => {
   const [user] = useAuthState(auth);
 
   return (
-    <AppBar position='static' style={{ background: 'lightblue' }}>
+    <AppBar
+      position='static'
+      style={{ background: 'rgba(128, 206, 232, 0.736)', height: 60, justifyContent: 'center' }}
+    >
       <Toolbar variant={'dense'}>
         <Box sx={{ flexGrow: 1 }} />
         {user ? (

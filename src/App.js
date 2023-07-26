@@ -5,7 +5,7 @@ import { useContext } from 'react';
 import { Context } from '.';
 import { useAuthState } from 'react-firebase-hooks/auth';
 import Loader from './components/Loader/Loader';
-import './App.css';
+import './styles/normalize.css'
 
 
 function App() {
