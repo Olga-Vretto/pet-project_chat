@@ -1,7 +1,6 @@
 .login {
   width: 480px;
-  background-color: rgba(128, 206, 232, 0.736);
-  border: 1px solid rgba(134, 190, 223, 0.493);
+  background-color: rgb(77, 109, 225);
   border-radius: 6px;
   box-shadow: rgb(197, 210, 228) 1px 1px 5px 1px;
 }

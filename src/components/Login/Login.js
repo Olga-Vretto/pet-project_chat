@@ -2,7 +2,7 @@ import { Box, Button, Container, Grid } from '@mui/material';
 import React, { useContext } from 'react';
 import { Context } from '../..';
 import { GoogleAuthProvider, getAuth, signInWithRedirect } from 'firebase/auth';
-import styles from './Login.module.scss';
+import './Login.css';
 
 const Login = () => {
   const { firebaseApp } = useContext(Context);
@@ -25,9 +25,9 @@ const Login = () => {
         alignItems={'center'}
         justifyContent={'center'}
       >
-        <Grid className={styles['login']} container alignItems={'center'} direction={'column'}>
+        <Grid className='login' container alignItems={'center'} direction={'column'}>
           <Box p={5}>
-            <Button onClick={login} variant={'outlined'}>
+            <Button onClick={login} variant='outlined' style={{ color: 'white', border: '1px solid white'}}>
               Enter with Google
             </Button>
           </Box>

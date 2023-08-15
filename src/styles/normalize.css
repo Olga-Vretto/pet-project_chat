@@ -131,3 +131,6 @@ a {
   box-sizing: border-box;
 }
 
+body {
+  background-color :rgba(23, 24, 24, 0.036);
+}

@@ -4,8 +4,9 @@ import { useCollectionData } from 'react-firebase-hooks/firestore';
 import { useContext, useRef, useState } from 'react';
 import { Context } from '../..';
 import { Avatar, Button, Container, Grid, TextField } from '@mui/material';
+import SendIcon from '@mui/icons-material/Send';
 import Loader from '../Loader/Loader';
-import styles from './AppChat.module.scss';
+import './AppChat.css';
 
 const AppChat = () => {
   const { auth, firestore } = useContext(Context);
@@ -36,41 +37,40 @@ const AppChat = () => {
 
   return (
     <Container>
-      <Grid className={styles['chat']} container justifyContent={'center'}>
-        <div
-          ref={messagesContainerRef}
-          className={styles['chat']}
-          style={{ width: '80%', height: '60vh', border: '1px solid blue', overflowY: 'auto' }}
-        >
+      <Grid className='chat' container justifyContent={'center'}>
+        <div ref={messagesContainerRef} className='chat-box'>
           {messages &&
             messages.map((message, index) => (
               <div
                 key={index}
-                style={{
-                  margin: 10,
-                  border: user.uid === message.uid ? '2px solid green' : '2px solid red',
-                  marginLeft: user.uid === message.uid ? 'auto' : '10px',
-                  width: 'fit-content',
-                  padding: 5,
-                }}
+                className={`chat-messages ${
+                  user.uid === message.uid ? 'chat-messages-blue' : 'chat-messages-grey'
+                }`}
               >
-                <Grid container>
-                  <Avatar src={message.photoURL} />
-                  <div>{message.displayName}</div>
-                </Grid>
-                <div>{message.text}</div>
+                {user.uid === message.uid ? (
+                  <>
+                    <div className='message-content'>{message.text}</div>
+                    <Avatar src={message.photoURL} />
+                  </>
+                ) : (
+                  <>
+                    <Avatar src={message.photoURL} />
+                    <div className='message-content'>{message.text}</div>
+                  </>
+                )}
               </div>
             ))}
         </div>
-        <Grid container direction={'column'} alignItems={'flex-end'} style={{ width: '80%' }}>
-          <TextField
+        <Grid className='text-box'>
+          <TextField 
             fullWidth
             maxRows={2}
-            variant={'outlined'}
             value={value}
             onChange={(e) => setValue(e.target.value)}
+            style={{color: 'rgb(77, 109, 225)'}}
+          className='text-field'
           />
-          <Button onClick={sendMessage} variant={'outlined'}>
+          <Button onClick={sendMessage} variant='contained' endIcon={<SendIcon />} style={{background: 'rgb(77, 109, 225)'}}>
             Send
           </Button>
         </Grid>

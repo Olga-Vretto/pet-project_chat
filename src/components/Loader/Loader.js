@@ -1,6 +1,6 @@
 import { Container, Grid } from '@mui/material';
 import React from 'react';
-import styles from './Loader.module.scss'
+import './Loader.css'
 
 const Loader = () => {
   return (
@@ -12,7 +12,7 @@ const Loader = () => {
         justifyContent={'center'}
       >
         <Grid container alignItems={'center'} direction={'column'}>
-          <div className={styles['loader']}>
+          <div class='loader'>
             <div></div>
             <div></div>
           </div>

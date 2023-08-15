@@ -12,17 +12,17 @@ const Navbar = () => {
   return (
     <AppBar
       position='static'
-      style={{ background: 'rgba(128, 206, 232, 0.736)', height: 60, justifyContent: 'center' }}
+      style={{ background: 'rgb(77, 109, 225)', height: 60, justifyContent: 'center' }}
     >
       <Toolbar variant={'dense'}>
         <Box sx={{ flexGrow: 1 }} />
         {user ? (
-          <Button onClick={() => auth.signOut()} variant={'outlined'}>
+          <Button onClick={() => auth.signOut()} variant='outlined' style={{ color: 'white', border: '1px solid white'}} >
             Back
           </Button>
         ) : (
           <NavLink to={LOGIN_ROUTE}>
-            <Button variant={'outlined'}>Login</Button>
+            <Button variant='outlined' style={{ color: 'white', border: '1px solid white'}}>Login</Button>
           </NavLink>
         )}
       </Toolbar>
